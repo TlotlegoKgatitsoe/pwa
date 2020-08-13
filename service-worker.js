@@ -3,6 +3,7 @@ const resToCache = [
     '/',
     'index.html',
     'css/main.css',
+    'js/main.js',
     'images/icon-192.png',
     'images/icon-512.png'
 ];
