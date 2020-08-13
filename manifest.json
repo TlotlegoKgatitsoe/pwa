@@ -1,0 +1,22 @@
+{
+  "short_name": "Stlotle",
+  "name": "Stlotle App",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html?from=homescreen",
+  "background_color": "purple",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "theme_color": "purple"
+}
