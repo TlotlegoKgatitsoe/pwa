@@ -12,8 +12,11 @@ const resToCache = [
 self.addEventListener( 'install', event => {
     console.log( 'Installing', event );
     event.waitUntil(
-        caches.open( cacheName ).then( cache => {
+        caches.open( cacheName )
+        .then( cache => {
             return cache.addAll( resToCache );
+        }).then( () => { 
+            self.skipWaiting();
         })
     )
 });

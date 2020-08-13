@@ -1,6 +1,6 @@
 {
+  "name": "Stlotle App",
   "short_name": "Stlotle",
-  "name": "Stlotle App",
   "icons": [
     {
       "src": "images/icon-192.png",
@@ -13,7 +13,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": "/index.html",
   "background_color": "purple",
   "display": "standalone",
   "orientation": "portrait",
