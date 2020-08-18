@@ -1,16 +1,37 @@
+:root {
+    --mdc-theme--background: #f1f1f1;
+    --mdc-theme--primary: #8e24aa;
+    --mdc-theme--primary-light: #ffc947;
+    --mdc-theme--primary-dark: #c66900;
+    --mdc-theme--on-primary: #fff;
+    --mdc-theme--secondary: #7a6054;
+    --mdc-theme--on-secondary: #fff;
+    --mdc-theme--error: #B00020;
+}
+
 body {
-    background-color: #f1f1f1;
+    background-color: var( --mdc-theme--background );
+}
+
+.mdc-top-app-bar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: var( --mdc-theme--primary );
+    z-index: 4;
+}
+
+main {
+    display: block;
+    position: relative;
+    top: 64px;
+}
+
+.mdc-button {
+    margin-top: 8px;
+    background-color: var( --mdc-theme--primary );
 }
 
 #installButton {
-    position: fixed;
-    right: 8px;
-    top: 8px;
-    background-color: red;
-    color: #fff;
-    outline: none;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
     display: none;
 }
