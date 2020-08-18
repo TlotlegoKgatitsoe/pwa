@@ -10,9 +10,6 @@ self.addEventListener( 'install', event => {
                 '/',
                 'index.html',
                 'css/main.css',
-                'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css',
-                'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js',
-                'https://fonts.googleapis.com/icon?family=Material+Icons',
                 'js/main.js',
                 'images/icon-192.png',
                 'images/icon-512.png'
