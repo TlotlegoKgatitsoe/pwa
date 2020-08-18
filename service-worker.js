@@ -1,4 +1,3 @@
-
 const cacheName = 'cache-v1.2';
 
 self.addEventListener( 'install', event => {
