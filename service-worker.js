@@ -1,5 +1,5 @@
-const cacheName = 'cache-v1.2';
 
+const cacheName = 'cache-v1.2';
 
 self.addEventListener( 'install', event => {
     console.log( 'Installing', event );
@@ -24,8 +24,8 @@ self.addEventListener( 'install', event => {
 });
 
 self.addEventListener( 'activate', event => {
-    console.log( 'Activated', event )
-}
+    console.log( 'Activated', event );
+})
 
 self.addEventListener( 'fetch', event => {
     console.log( 'Fetching', event );
@@ -34,4 +34,4 @@ self.addEventListener( 'fetch', event => {
             return cachedResponse || fetch( event.request );
         })
     );
-}))
+})
