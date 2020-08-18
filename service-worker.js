@@ -1,4 +1,4 @@
-const cacheName = 'cache-v1.2';
+const cacheName = 'cache-v1.2.1.a';
 
 self.addEventListener( 'install', event => {
     console.log( 'Installing', event );
@@ -20,7 +20,17 @@ self.addEventListener( 'install', event => {
 });
 
 self.addEventListener( 'activate', event => {
-    // event.waitUntil( self.clients.claim() ); 17
+    event.waitUntil(
+        caches.keys().then( cacheNames => {
+            return Promise.all(
+                cacheNames.map( arrCacheName => {
+                    if ( arrCacheName !== cacheName ) {
+                        return caches.delete( arrCacheName );
+                    }
+                })
+            )
+        })
+    )
 })
 
 self.addEventListener( 'fetch', event => {
