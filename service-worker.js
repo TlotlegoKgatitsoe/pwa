@@ -1,4 +1,4 @@
-const cacheName = 'cache-1.3.1';
+const cacheName = 'cache-1.3.3';
 
 self.addEventListener( 'install', event => {
     console.log( 'Installing', event );
