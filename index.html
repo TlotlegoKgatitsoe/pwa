@@ -29,7 +29,7 @@
 		<button class="mdc-button mdc-button--raised" style="background-color: #8e24aa;">
 			<div class="mdc-button__ripple"></div>
 			<span class="mdc-button__label"> Open Snackbar </span>
-	 </button>
+		</button>
 	</main>
 
 	<div class="mdc-snackbar">
@@ -37,17 +37,18 @@
 			<div class="mdc-snackbar__label" role="status" aria-live="polite"> Dumela! </div>
 		</div>
 	</div>
+
 	<script type="application/javascript" src="js/main.js" defer async></script>
 	<script>
 		if ( 'serviceWorker' in navigator ) {
-    window.addEventListener( 'load', () => {
+    	window.addEventListener( 'load', () => {
         navigator.serviceWorker.register( '/service-worker.js' ).then( reg => {
-            console.log( 'Registered', reg );
+        	console.log( 'Registered', reg );
         }).catch( err => {
-            console.log( 'Registration failed', err );
+        	console.log( 'Registration failed', err );
         })
-    });
-}
+    	});
+		}
 	</script>
 </body>
 </html>
