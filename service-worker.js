@@ -2,7 +2,7 @@ const cacheName = 'cache-v1.2';
 
 
 self.addEventListener( 'install', event => {
-    // console.log( 'Installing', event );
+    console.log( 'Installing', event );
     event.waitUntil(
         caches.open( cacheName )
         .then( cache => {
@@ -24,25 +24,14 @@ self.addEventListener( 'install', event => {
 });
 
 self.addEventListener( 'activate', event => {
-    console.log( 'Activated', event );
-    event.waitUntil(
-        caches.keys().then( cacheNames => {
-            return Promise.all(
-                cacheNames.map( arrCacheName => {
-                    if ( arrCacheName !== cacheName ) {
-                        return caches.delete( arrCacheName );
-                    }
-                })
-            );
-        })
-    );
+    console.log( 'Activated', event )
 }
 
 self.addEventListener( 'fetch', event => {
-    // console.log( 'Fetching', event );
+    console.log( 'Fetching', event );
     event.respondWith( 
         caches.match( event.request ).then( cachedResponse => {
             return cachedResponse || fetch( event.request );
         })
     );
-});
+}))
