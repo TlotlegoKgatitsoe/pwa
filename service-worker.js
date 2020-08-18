@@ -21,11 +21,10 @@ self.addEventListener( 'install', event => {
 });
 
 self.addEventListener( 'activate', event => {
-    console.log( 'Activated', event );
+    event.waitUntil( self.clients.claim() );
 })
 
 self.addEventListener( 'fetch', event => {
-    console.log( 'Fetching', event );
     event.respondWith( 
         caches.match( event.request ).then( cachedResponse => {
             return cachedResponse || fetch( event.request );

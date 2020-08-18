@@ -1,19 +1,4 @@
-if ( 'serviceWorker' in navigator ) {
-    window.addEventListener( 'load', () => {
-        navigator.serviceWorker.register( '/service-worker.js' ).then( reg => {
-            console.log( 'Registered', reg );
-        }).catch( err => {
-            console.log( 'Registration failed', err );
-        })
-    });
-}
-/****************************************************************
- * 
- *                               Work starts here
- * 
- * **************************************************************/
-
-
+console.log( 'Hello ' );
 let deferredPrompt;
 const installButton = document.querySelector( '#installButton' );
 const button = document.querySelector( '.mdc-button' );
