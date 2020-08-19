@@ -25,19 +25,19 @@ button.addEventListener( 'click', () => {
 });
 
 
-fetch( 'https://restcountries.eu/rest/v2/all' )
-.then( res => {
-    if ( !res.ok ) throw res.statusText;
-    return res.json();
-})
-.then( countries => {
-    const countriesCardsCont = document.querySelector( '#countries-cards-container' );
-    for ( const country of countries ) {
-        countriesCardsCont.innerHTML += `
-            <div class='mdc-card mdc-card__primary-action'>
-                <div class="mdc-card__media mdc-card__media--16-9" style='background-image: url( "${ country.flag }" );'></div>
-                <h3 class='card-title'> ${ country.name } </h3>
-                <span class='card-sec-text'> ${ new Intl.NumberFormat( 'en').format( country.population ) } people </span>
-            </div>`;
-    }
-})
+// fetch( 'https://restcountries.eu/rest/v2/all' )
+// .then( res => {
+//     if ( !res.ok ) throw res.statusText;
+//     return res.json();
+// })
+// .then( countries => {
+//     const countriesCardsCont = document.querySelector( '#countries-cards-container' );
+//     for ( const country of countries ) {
+//         countriesCardsCont.innerHTML += `
+//             <div class='mdc-card mdc-card__primary-action'>
+//                 <div class="mdc-card__media mdc-card__media--16-9" style='background-image: url( "${ country.flag }" );'></div>
+//                 <h3 class='card-title'> ${ country.name } </h3>
+//                 <span class='card-sec-text'> ${ new Intl.NumberFormat( 'en').format( country.population ) } people </span>
+//             </div>`;
+//     }
+// })
