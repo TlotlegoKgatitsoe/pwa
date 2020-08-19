@@ -13,7 +13,10 @@ self.addEventListener( 'install', event => {
                 'icons/icon-32.png',
                 'icons/icon-180.png',
                 'icons/icon-192.png',
-                'icons/icon-512.png'
+                'icons/icon-512.png',
+                'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css',
+                'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js',
+                'https://fonts.googleapis.com/icon?family=Material+Icons'
             ]);
         }).then( () => { 
             self.skipWaiting();

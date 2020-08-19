@@ -14,7 +14,7 @@ installButton.addEventListener( 'click', () => {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then( choiceResult => {
         deferredPrompt = null;
-        installButton.remove();
+        installButton.style.display = 'none';
     })
 });
 
@@ -25,7 +25,7 @@ button.addEventListener( 'click', () => {
 });
 
 
-// fetch( 'https://restcountries.eu/rest/v2/all' )
+// fetch( 'https://restcountries.eu/rest/v2/currency/zar?fields=name;population;flag;capital' )
 // .then( res => {
 //     if ( !res.ok ) throw res.statusText;
 //     return res.json();
@@ -41,3 +41,9 @@ button.addEventListener( 'click', () => {
 //             </div>`;
 //     }
 // })
+
+// {flag: "https://restcountries.eu/data/lso.svg", name: "Lesotho", capital: "Maseru", population: 1894194}
+// 1: {flag: "https://restcountries.eu/data/nam.svg", name: "Namibia", capital: "Windhoek", population: 2324388}
+// 2: {flag: "https://restcountries.eu/data/zaf.svg", name: "South Africa", capital: "Pretoria", population: 55653654}
+// 3: {flag: "https://restcountries.eu/data/zwe.svg", name: "Zimbabwe", capital: "Harare", population: 14240168}
+// length: 4
