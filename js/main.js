@@ -19,7 +19,9 @@ installButton.addEventListener( 'click', () => {
 });
 
 button.addEventListener( 'click', () => {
-    if ( !snackbar.isOpen ) snackbar.open();
+    if ( !snackbar.isOpen ) {
+        snackbar.open();
+    }
 });
 
 
