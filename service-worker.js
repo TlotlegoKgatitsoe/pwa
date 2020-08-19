@@ -1,7 +1,6 @@
 const cacheName = 'cache-1.3.3';
 
 self.addEventListener( 'install', event => {
-    console.log( 'Installing', event );
     event.waitUntil(
         caches.open( cacheName )
         .then( cache => {
