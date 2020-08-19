@@ -14,7 +14,7 @@ installButton.addEventListener( 'click', () => {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then( choiceResult => {
         deferredPrompt = null;
-        installButton.style.display = 'none';
+        installButton.remove();
     })
 });
 
