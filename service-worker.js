@@ -1,4 +1,4 @@
-const cacheName = 'cache-1.3.3';
+const cacheName = 'cache-1.3.4';
 
 self.addEventListener( 'install', event => {
     event.waitUntil(
@@ -9,8 +9,11 @@ self.addEventListener( 'install', event => {
                 'index.html',
                 'css/main.css',
                 'js/main.js',
-                'images/icon-192.png',
-                'images/icon-512.png'
+                'icons/icon-16.png',
+                'icons/icon-32.png',
+                'icons/icon-180.png',
+                'icons/icon-192.png',
+                'icons/icon-512.png'
             ]);
         }).then( () => { 
             self.skipWaiting();
