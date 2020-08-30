@@ -5,9 +5,7 @@ const snackbar = mdc.snackbar.MDCSnackbar.attachTo( document.querySelector( '.md
 mdc.ripple.MDCRipple.attachTo( button );
 
 button.addEventListener( 'click', () => {
-    if ( !snackbar.isOpen ) {
-        snackbar.open();
-    }
+  if ( !snackbar.isOpen ) snackbar.open();
 });
 
 
