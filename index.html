@@ -5,9 +5,9 @@
 	<meta name="charset" content="UTF-8"/>
 	<meta name="author" content="Tlotlego Kgatitsoe"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+	<link rel="stylesheet" type='text/css' href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"></link>
 	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" type='text/css' href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link type="text/css" rel="stylesheet" href="css/main.css"/>
 	<link rel="manifest" href="/manifest.json" />
 	<title> Stlotle App </title>
@@ -27,13 +27,7 @@
 
 	<main>
 
-		<div id='countries-cards-container'>
-			<div class='mdc-card mdc-card__primary-action'>
-				<div class="mdc-card__media mdc-card__media--16-9" style='background-image: url( "images/rsa.svg" );'></div>
-				<h3 class='card-title'> South Africa </h3>
-				<span class='card-sec-text'> 55 653 654 people </span>
-			</div>
-		</div>
+		<div id='countries-cards-container'></div>
 
 		<button class="mdc-button mdc-button--raised" style="background-color: #8e24aa;">
 			<div class="mdc-button__ripple"></div>
@@ -47,7 +41,7 @@
 		</div>
 	</div>
 
-	<script type="application/javascript" src="js/main.js" defer async></script>
+	<script src='./js/main.js'></script>
 	<script>
 		if ( 'serviceWorker' in navigator ) {
     	window.addEventListener( 'load', () => {
@@ -58,6 +52,23 @@
         })
     	});
 		}
+
+		let deferredPrompt;
+		const installButton = document.querySelector( '#installButton' );
+		
+		window.addEventListener( 'beforeinstallprompt', event => {
+				event.preventDefault();
+				deferredPrompt = event;
+				installButton.style.display = 'block';
+		});
+
+		installButton.addEventListener( 'click', () => {
+				deferredPrompt.prompt();
+				deferredPrompt.userChoice.then( choiceResult => {
+						deferredPrompt = null;
+						installButton.style.display = 'none';
+				})
+		});
 	</script>
 </body>
 </html>
