@@ -1,8 +1,8 @@
 {
-  "name": "PWA",
+  "name": "pwa",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "an app that shows off material design web components",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
