@@ -20,7 +20,21 @@
 			</section>
 			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
 				<button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" id='installButton' aria-label="Options">get_app</button>
-				<button class="material-icons mdc-top-app-bar__action-item mdc-icon-button mdc-menu-surface--anchor" id='firstIcon' aria-label="Options">more_vert</button>
+				<button class="material-icons mdc-top-app-bar__action-item mdc-icon-button mdc-menu-surface--anchor" id='firstIcon' aria-label="Options">
+					more_vert
+					<div class="app-menu mdc-menu mdc-menu-surface">
+						<ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+							<li class="mdc-list-item" role="menuitem">
+								<span class="mdc-list-item__ripple"></span>
+								<span class="mdc-list-item__text">A Menu Item</span>
+							</li>
+							<li class="mdc-list-item" role="menuitem">
+								<span class="mdc-list-item__ripple"></span>
+								<span class="mdc-list-item__text">Another Menu Item</span>
+							</li>
+						</ul>
+					</div>
+				</button>
 			</section>
 		</div>
 	</header>
@@ -43,32 +57,32 @@
 
 	<script src='./js/main.js'></script>
 	<script>
+		let deferredPrompt;
+		const installButton = document.querySelector( '#installButton' );
+			
+		window.addEventListener( 'beforeinstallprompt', event => {
+			event.preventDefault();
+			deferredPrompt = event;
+			installButton.style.display = 'block';
+		});
+
+		installButton.addEventListener( 'click', () => {
+			deferredPrompt.prompt();
+			deferredPrompt.userChoice.then( choiceResult => {
+				deferredPrompt = null;
+				installButton.style.display = 'none';
+			})
+		});
+
 		if ( 'serviceWorker' in navigator ) {
     	window.addEventListener( 'load', () => {
         navigator.serviceWorker.register( '/service-worker.js' ).then( reg => {
-        	console.log( 'Registered', reg );
+					console.log( 'Registered', reg );
         }).catch( err => {
         	console.log( 'Registration failed', err );
         })
     	});
 		}
-
-		let deferredPrompt;
-		const installButton = document.querySelector( '#installButton' );
-		
-		window.addEventListener( 'beforeinstallprompt', event => {
-				event.preventDefault();
-				deferredPrompt = event;
-				installButton.style.display = 'block';
-		});
-
-		installButton.addEventListener( 'click', () => {
-				deferredPrompt.prompt();
-				deferredPrompt.userChoice.then( choiceResult => {
-						deferredPrompt = null;
-						installButton.style.display = 'none';
-				})
-		});
 	</script>
 </body>
 </html>
