@@ -5,7 +5,7 @@ const sourceURL = express.static( path.join( __dirname, 'src' ) );
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use( sourceURL );
+app.use( express.static( sourceURL ) );
 
 // Routing
 app.get( '*', ( req, res ) => {
