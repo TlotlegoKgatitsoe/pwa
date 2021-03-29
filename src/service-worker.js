@@ -9,14 +9,13 @@ self.addEventListener( 'install', event => {
                 'index.html',
                 'css/main.css',
                 'js/main.js',
+                'manifest.json',
+                'favicon.ico',
                 'icons/icon-16.png',
                 'icons/icon-32.png',
                 'icons/icon-180.png',
                 'icons/icon-192.png',
                 'icons/icon-512.png',
-                'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css',
-                'https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js',
-                'https://fonts.googleapis.com/icon?family=Material+Icons'
             ]);
         }).then( () => { 
             self.skipWaiting();
@@ -40,8 +39,17 @@ self.addEventListener( 'activate', event => {
 
 self.addEventListener( 'fetch', event => {
     event.respondWith( 
-        caches.match( event.request ).then( cachedResponse => {
-            return cachedResponse || fetch( event.request );
+        caches.match( event.request ).then( async cachedResponse => {
+            if ( !cachedResponse ) {
+                const res = await fetch( event.request );
+                if ( !res.ok ) throw res.statusText;
+                caches.open( cacheName ).then( cache => {
+                    cache.put( new Request( event.request.url ), res );
+                    return res;
+                })
+            } else {
+                return cachedResponse;
+            }
         })
     );
 })

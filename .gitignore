@@ -1,2 +1,5 @@
 node_modules
 src\js\main.test.js
+clock.js
+logic.js
+.env
