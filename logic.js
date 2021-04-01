@@ -54,7 +54,6 @@ const createNotification = ( pushSubscription, payload ) => {
 const fetchBars = ( assetName, timeframe, numberOfBars ) => {
   alpaca.getBars( timeframe, assetName, { limit: numberOfBars }).then( data => {
     const bars = data[ assetName ].reverse();
-    notifyUser( 'Got bars' );
     for ( let bar of bars ) {
       bar.date = new Date( bar.startEpochTime * 1000 );
     }

@@ -58,7 +58,7 @@ self.addEventListener( 'push', event => {
     const options = {
         body: body,
         icon: '/icons/icon-16.png',
-        vibrate: [ 100, 50, 100, 50, 100, 50, 100, 50, 100 ],
+        vibrate: [ 250, 200, 150, 150, 100, 50, 450, 450, 150, 150, 100, 50, 900, 2250 ],
         data: {
             dateOfArrival: new Date(),
             primaryKey: 1
