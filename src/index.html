@@ -13,7 +13,7 @@
 
 	<main>
 		<button id='installButton'>Install</button>
-		<button id='dateBtn'> Get date </button>
+		<button id='push-button'> Allow Push </button>
 		<p style="font-size: 25px;" id="res"></p>
 	</main>
 
@@ -41,6 +41,13 @@
     	window.addEventListener( 'load', () => {
         navigator.serviceWorker.register( '/service-worker.js' ).then( reg => {
 					console.log( 'Registered', reg );
+					reg.pushManager.getSubscription().then( sub => {
+						if ( sub == null ) {
+							console.log( 'The user is not subscribed to push notifications' );
+						} else {
+							console.log( 'Sub', sub );
+						}
+					})
         }).catch( err => {
         	console.log( 'Registration failed', err );
         })

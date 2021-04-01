@@ -1,4 +1,5 @@
 const cacheName = 'cache-1.3.4.a';
+const urlsToIgnore = [ '/update', '/key' ];
 
 self.addEventListener( 'install', event => {
     event.waitUntil(
@@ -39,17 +40,31 @@ self.addEventListener( 'activate', event => {
 
 self.addEventListener( 'fetch', event => {
     event.respondWith( 
-        caches.match( event.request ).then( async cachedResponse => {
-            if ( !cachedResponse ) {
-                const res = await fetch( event.request );
-                if ( !res.ok ) throw res.statusText;
-                caches.open( cacheName ).then( cache => {
-                    cache.put( new Request( event.request.url ), res );
-                    return res;
-                })
-            } else {
-                return cachedResponse;
-            }
+        fetch( event.request ).catch( () => {
+            return caches.match( event.request );
         })
     );
 })
+
+self.addEventListener( 'push', event => {
+    let body = '';
+
+    if ( event.data ) {
+        body = event.data.text();
+    } else {
+        body = 'Push message no payload';
+    }
+
+    const options = {
+        body: body,
+        icon: '/icons/icon-16.png',
+        vibrate: [ 100, 50, 100, 50, 100, 50, 100, 50, 100 ],
+        data: {
+            dateOfArrival: new Date(),
+            primaryKey: 1
+        }
+    };
+    event.waitUntil(
+        self.registration.showNotification( 'Signals', options )
+    );
+});
