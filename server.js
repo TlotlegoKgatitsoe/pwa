@@ -40,7 +40,7 @@ app.get( '/key', ( req, res ) => {
 app.post( '/update', ( req, res ) => {
   fileSystem.writeFile( JSON_FILE_PATH, JSON.stringify( req.body ), ( err ) => {
     if ( err ) throw err;
-    res.send( 'Data successfully sent to the server!' );
+    res.send( 'Data is successfully sent to the server!' );
     if ( !isLogicRunning ) {
       require( './logic' )( alpaca );
       isLogicRunning = true;
